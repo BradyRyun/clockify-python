@@ -15,15 +15,6 @@ class User():
     def __str__(self):
         return self.id
 
-class Workspace():
-
-    def __init__ (self,name = None, id = None):
-        self.name = name
-        self.id = id
-
-    def __str__(self):
-        return self.id + '-' + self.name
-
 class Clockify():
 
     def __init__(self,api_key):
@@ -35,13 +26,7 @@ class Clockify():
         url = self.base_url+'workspaces/'
         r = self.__request_get(url)
         
-        workspaces = []
-        
-        for info in r.json():
-            workspace = Workspace(info['name'], info['id'])
-            workspaces.append (workspace)
-
-        return workspaces
+        return r.json()
     
     def get_user (self, id):
         url = self.base_url + 'users/'+str(id)
