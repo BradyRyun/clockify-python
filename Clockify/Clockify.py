@@ -39,8 +39,8 @@ class Clockify():
         r = self.__request_get(url)
         return r.json()
 
-    def get_all_project_users(self, workspace_id,project_id):
-        url = self.base_url+'workspaces/'+workspace_id+'/projects/'+project_id+'/users/'
+    def get_all_workspace_users(self, workspace_id):
+        url = self.base_url+'workspaces/'+workspace_id+'/users/'
         r = self.__request_get(url)
         return r.json()
 
