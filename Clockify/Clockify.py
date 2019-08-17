@@ -69,7 +69,7 @@ class Clockify():
         data = {'name': project_name}
         r = self.__request_post(url, data)
 
-    def create_new_worspace(self, name):
+    def create_new_workspace(self, name):
         
         url = self.base_url+'workspaces/'
         data = {'name': name}
