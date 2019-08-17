@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='clockify',  # Required
-    version='0.0.6',  # Required
+    version='0.0.7',  # Required
     author="Paulo Sergio dos Santo Junior",
     author_email="paulossjuniort@gmail.com",
     description="A lib to access the Clockify ",
