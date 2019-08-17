@@ -43,6 +43,11 @@ class Clockify():
         url = self.base_url+'workspaces/'+workspace_id+'/users/'
         r = self.__request_get(url)
         return r.json()
+    
+    def get_all_time_entry_user(self,workspace_id, user_id):
+        url = self.base_url+'v1/workspaces/'+workspace_id+'/user/'+user_id+'/time-entries'
+        r = self.__request_get(url)
+        return r.json()
 
     def add_new_task(self, workspace_id, project_id, task_name, assigneeId = None):
         
@@ -62,6 +67,13 @@ class Clockify():
     def create_new_project(self, workspace_id, project_name):
         url = self.base_url+'workspaces/'+workspace_id+'/projects/'
         data = {'name': project_name}
+        r = self.__request_post(url, data)
+
+    def create_new_worspace(self, name):
+        
+        url = self.base_url+'workspaces/'
+        data = {'name': name}
+
         r = self.__request_post(url, data)
 
     def __request_get(self,url):

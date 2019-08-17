@@ -5,7 +5,8 @@ clockify_server = Clockify("W/HtkbB5hxdlYvnp")
 workspaces = clockify_server.get_all_workspaces()
 
 for workspace in workspaces:
-    pprint (workspace['name'])
-    users = clockify_server.get_all_workspace_users(workspace['id'])
-    for user in users:
-        pprint (user)
+    pprint (workspace)
+    #users = clockify_server.get_all_workspace_users(workspace['id'])
+    #for user in users:
+    #    times = clockify_server.get_all_time_entry_user(workspace['id'], user['id'])
+    #    pprint (times)
