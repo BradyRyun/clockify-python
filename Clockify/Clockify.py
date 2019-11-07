@@ -47,8 +47,26 @@ class Clockify():
     def get_all_time_entry_user(self,workspace_id, user_id):
         url = self.base_url+'v1/workspaces/'+workspace_id+'/user/'+user_id+'/time-entries'
         r = self.__request_get(url)
-        return r.json()
-
+        time_entries = []
+        time_entries.append(r.json())
+        hasTimeEntry = True
+        page = 1
+        while (hasTimeEntry):
+            urlx = url + "/?page="+str(page)
+            r = self.__request_get(urlx)
+            if len(r.json()) > 0:
+                time_entries.append(r.json())
+                page = page + 1
+            else: 
+                hasTimeEntry = False
+                page = 1
+        
+        time_x = []
+        for time_entry in time_entries:
+            for TE in time_entry:
+                time_x.append (TE)
+        return time_x
+        
     def add_new_task(self, workspace_id, project_id, task_name, assigneeId = None):
         
         url = self.base_url+'workspaces/'+workspace_id+'/projects/'+project_id+'/tasks/'
