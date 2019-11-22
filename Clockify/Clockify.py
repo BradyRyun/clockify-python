@@ -24,9 +24,7 @@ class Clockify():
 
     def get_all_workspaces(self):
         url = self.base_url+'workspaces/'
-        r = self.__request_get(url)
-        
-        return r.json()
+        return self.__request_get(url)
     
     def get_user (self, id):
         url = self.base_url + 'users/'+str(id)
@@ -41,8 +39,7 @@ class Clockify():
 
     def get_all_workspace_users(self, workspace_id):
         url = self.base_url+'workspaces/'+workspace_id+'/users/'
-        r = self.__request_get(url)
-        return r.json()
+        return self.__request_get(url)
     
     def get_all_time_entry_user(self,workspace_id, user_id):
         url = self.base_url+'v1/workspaces/'+workspace_id+'/user/'+user_id+'/time-entries'
@@ -78,21 +75,19 @@ class Clockify():
         else:
             task =  {'name': task_name, 'projectId': project_id, 'assigneeId': assigneeId}   
     
-        r = self.__request_post(url, task)
-        
-        return r.json()
+        return self.__request_post(url, task)
     
     def create_new_project(self, workspace_id, project_name):
         url = self.base_url+'workspaces/'+workspace_id+'/projects/'
         data = {'name': project_name}
-        r = self.__request_post(url, data)
+        return self.__request_post(url, data)
 
     def create_new_workspace(self, name):
         
         url = self.base_url+'workspaces/'
         data = {'name': name}
-
-        r = self.__request_post(url, data)
+        return self.__request_post(url, data)
+        
 
     def __request_get(self,url):
         return requests.get(url, headers=self.header)
