@@ -79,7 +79,21 @@ class Clockify():
     
     def create_new_project(self, workspace_id, project_name):
         url = self.base_url+'workspaces/'+workspace_id+'/projects/'
-        data = {'name': project_name}
+        data = {
+                'name': project_name,
+                "clientId": "",
+                "isPublic": "false",
+                "estimate": {
+                    "estimate": "3600",
+                    "type": "AUTO" 
+                    },
+                "color": "#f44336",
+                "billable": "false"
+            }
+
+
+
+
         return self.__request_post(url, data)
 
     def create_new_workspace(self, name):
