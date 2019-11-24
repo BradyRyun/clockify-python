@@ -3,7 +3,7 @@ from pprint import pprint
 
 clockify_server = Clockify("XcN5OMhbvm/92koz")
 
-workspace = "5dd88d841ca53362a488c45d"
+workspace = "5dda7fc31ca53362a48b291e"
 
-x = clockify_server.create_new_project(workspace, "projeto")
+x = clockify_server.add_new_user(workspace, "paulo.junior@ifes.edu.br")
 pprint (x.__dict__)

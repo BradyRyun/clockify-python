@@ -91,9 +91,6 @@ class Clockify():
                 "billable": "false"
             }
 
-
-
-
         return self.__request_post(url, data)
 
     def create_new_workspace(self, name):
@@ -104,7 +101,9 @@ class Clockify():
     
     def add_new_user(self,workspace_id, email):
         url = self.base_url+'workspaces/'+workspace_id+'/users'
-        data = {'emails': [email]}
+        emails = []
+        emails.append(email)
+        data = {'emails': emails}
         return self.__request_post(url, data)
 
     def __request_get(self,url):
