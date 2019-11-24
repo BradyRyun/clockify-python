@@ -101,7 +101,11 @@ class Clockify():
         url = self.base_url+'workspaces/'
         data = {'name': name}
         return self.__request_post(url, data)
-        
+    
+    def add_new_user(self,workspace_id, email):
+        url = self.base_url+'workspaces/'+workspace_id+'/users'
+        data = {'emails': [email]}
+        return self.__request_post(url, data)
 
     def __request_get(self,url):
         return requests.get(url, headers=self.header)
