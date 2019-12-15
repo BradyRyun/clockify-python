@@ -77,6 +77,10 @@ class Clockify():
     
         return self.__request_post(url, task)
     
+    def get_task (self, workspace_id, project_id):
+        url = self.base_url+'workspaces/'+workspace_id+'/projects/'+project_id+'/tasks/'
+        return self.__request_get(url)
+    
     def create_new_project(self, workspace_id, project_name):
         url = self.base_url+'workspaces/'+workspace_id+'/projects/'
         data = {

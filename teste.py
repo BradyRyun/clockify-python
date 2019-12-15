@@ -3,7 +3,10 @@ from pprint import pprint
 
 clockify_server = Clockify("XcN5OMhbvm/92koz")
 
-workspace = "5dda7fc31ca53362a48b291e"
+workspaces = clockify_server.get_all_workspaces()
+workspaces = workspaces.json()
 
-x = clockify_server.add_new_user(workspace, "paulo.junior@ifes.edu.br")
-pprint (x.__dict__)
+for workspace in workspaces:
+    projects = clockify_server.get_all_projects(workspace['id'])
+    pprint (workspace['name'])
+    
