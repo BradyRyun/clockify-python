@@ -48,16 +48,18 @@ class Clockify():
         time_entries.append(r.json())
         hasTimeEntry = True
         page = 1
+        
         while (hasTimeEntry):
             urlx = url + "/?page="+str(page)
             r = self.__request_get(urlx)
-            if len(r.json()) > 0:
-                time_entries.append(r.json())
-                page = page + 1
-            else: 
-                hasTimeEntry = False
-                page = 1
-        
+            if r.status_code == 200:
+                if len(r.json()) > 0:
+                    time_entries.append(r.json())
+                    page = page + 1
+                elif len(r.json()) < 50 or len(r.json()) == 0:
+                    hasTimeEntry = False
+                    page = 1
+             
         time_x = []
         for time_entry in time_entries:
             for TE in time_entry:
@@ -77,9 +79,35 @@ class Clockify():
     
         return self.__request_post(url, task)
     
-    def get_task (self, workspace_id, project_id):
+    def __get_task(self, url):
+        all_tasks = []
+        next = True
+        page = 0
+        urlx = url
+        while (next):
+            r = self.__request_get(urlx)
+            if r.status_code == 200:
+                tasks = r.json()
+                if len(tasks) == 0:
+                    next = False
+                for task in tasks:
+                    if task in all_tasks:
+                        next = False
+                        break
+                    all_tasks.append(task)
+                page = page + 1  
+            else:
+                next = False
+            urlx = url + "?page="+str(page)
+        return all_tasks
+
+    def get_task_done(self, workspace_id, project_id):
         url = self.base_url+'workspaces/'+workspace_id+'/projects/'+project_id+'/tasks/'
-        return self.__request_get(url)
+        return self.__get_task(url)
+
+    def get_task_active (self, workspace_id, project_id):
+        url = self.base_url+'workspaces/'+workspace_id+'/projects/'+project_id+'/tasks/?is-active=True'
+        return self.__get_task(url)
     
     def create_new_project(self, workspace_id, project_name):
         url = self.base_url+'workspaces/'+workspace_id+'/projects/'
