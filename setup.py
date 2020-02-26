@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='clockify',  # Required
-    version='1.0.15',  # Required
+    version='1.0.16',  # Required
     author="Paulo Sergio dos Santo Junior",
     author_email="paulossjuniort@gmail.com",
     description="A lib to access the Clockify API",
