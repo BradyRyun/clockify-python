@@ -1,7 +1,7 @@
 # Goal
 It is reponsible for sending command to [Clockify API](https://clockify.me/).
 
-This lib was build based on [API documentation](https://clockify.me/developers-api) da ferramenta.
+This lib was built based on [Clockify API documentation](https://clockify.me/developers-api).
 
 ## Installation
 To install clockify, run this command in your terminal:
