@@ -1,7 +1,7 @@
 from clockify.clockify import Clockify
 from pprint import pprint 
 
-clockify_server = Clockify("XcN5OMhbvm/92koz")
+clockify_server = Clockify("xxxxxxxx")
 wok_id = "5be0caaab079873ca2da70e5"
 projects_clockify = clockify_server.get_all_projects(wok_id)
 for project in projects_clockify:
