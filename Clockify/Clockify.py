@@ -1,19 +1,5 @@
 import requests
 import json
-from pprint import pprint
-
-class Task():
-    def __init__(self,name, projectId):
-        self.name = name
-        self.projectId = projectId
-
-class User():
-    
-    def __init__ (self, id = None):
-        self.id = id
-
-    def __str__(self):
-        return self.id
 
 class Clockify():
 

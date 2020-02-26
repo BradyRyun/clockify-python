@@ -1,13 +1,16 @@
-# Objetivo
-Biblioteca responsável por realizar operações (e.g., busca ou criação de projetos) no [clockify](https://clockify.me/).
+# Goal
+It is reponsible for sending command to [Clockify API](https://clockify.me/).
 
-A biblioteca foi construída tomando como base a [documentação](https://clockify.me/developers-api) da ferramenta.
+This lib was build based on [API documentation](https://clockify.me/developers-api) da ferramenta.
 
-## Instalação
+## Installation
+To install clockify, run this command in your terminal:
+```
 pip install clockify
+```
 
-
-## Exemplo de utilização
+## Usage
+To use changelogs in a Python project:
 
 ```python
 from clockify.clockify import Clockify
