@@ -10,12 +10,12 @@ pip install clockify
 ```
 
 ## Usage
-To use changelogs in a Python project:
+To use clockify in a Python project:
 
 ```python
 from clockify.clockify import Clockify
 from pprint import pprint 
-clockify_server = Clockify("chavedeacesso")
+clockify_server = Clockify("secretkey")
 workspaces = clockify_server.get_all_workspaces()
 
 for workspace in workspaces:
