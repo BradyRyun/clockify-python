@@ -9,6 +9,7 @@ setup(
     author="Paulo Sergio dos Santo Junior",
     author_email="paulossjuniort@gmail.com",
     description="A lib to access the Clockify API",
+    long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://gitlab.com/integration_seon/libs/application/clockify",
     packages=find_packages(),
