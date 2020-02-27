@@ -48,7 +48,7 @@ class Clockify():
             url = self.base_url+'v1/workspaces/'+workspace_id+'/user/'+user_id+'/time-entries'
             r = self.__request_get(url)
             time_entries = []
-            time_entries.append(r.json())
+            time_entries.append(r)
             has_time_entry = True
             page = 1
             
@@ -56,9 +56,9 @@ class Clockify():
                 urlx = url + "/?page="+str(page)
                 r = self.__request_get(urlx)
                 if len(r) > 0:
-                    time_entries.append(r.json())
+                    time_entries.append(r)
                     page = page + 1
-                elif len(r.json()) < 50 or len(r.json()) == 0:
+                elif len(r) < 50 or len(r) == 0:
                     has_time_entry = False
                     page = 1
                 
