@@ -1,6 +1,7 @@
 import requests
 import json
 import logging
+import time
 logging.basicConfig(level=logging.INFO)
 
 class Clockify():
@@ -168,18 +169,22 @@ class Clockify():
             logging.error(e.__dict__)
 
     def __request_get(self,url):
-        try:
-            response = requests.get(url, headers=self.header)
-            return response.json()
-        except Exception as e:
-            logging.error("Error: {0}".format(e))
-            logging.error(e.__dict__)
-
+        while (True):
+            try:
+                response = requests.get(url, headers=self.header)
+                return response.json()
+            except Exception as e:
+                logging.error("Error: {0}".format(e))
+                logging.error(e.__dict__)
+                time.sleep(60)
     
     def __request_post(self,url,payload):
-        try:
-            response = requests.post(url, headers=self.header,json=payload)
-            return response.json()
-        except Exception as e:
-            logging.error("Error: {0}".format(e))
-            logging.error(e.__dict__)
+        while (True):
+            try:
+                response = requests.post(url, headers=self.header,json=payload)
+                return response.json()
+            except Exception as e:
+                logging.error("Error: {0}".format(e))
+                logging.error(e.__dict__)
+                logging.error("Try againg in 60 seconds")
+                time.sleep(60)
