@@ -175,7 +175,6 @@ class Clockify():
                 return response.json()
             except Exception as e:
                 logging.error("Error: {0}".format(e))
-                logging.error(e.__dict__)
                 logging.error("Try againg in 60 seconds")
                 time.sleep(60)
     
@@ -186,6 +185,5 @@ class Clockify():
                 return response.json()
             except Exception as e:
                 logging.error("Error: {0}".format(e))
-                logging.error(e.__dict__)
                 logging.error("Try againg in 60 seconds")
                 time.sleep(60)
