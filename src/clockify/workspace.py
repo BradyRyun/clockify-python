@@ -12,7 +12,7 @@ class Workspace(AbstractClockify):
 		try:
 			logging.info("Start function: get_all_workspaces")
 			url = self.base_url+'workspaces/'
-            return self.request_get(url)
+			return self.request_get(url)
 			
 		except Exception as e: 
 			logging.error("OS error: {0}".format(e))
@@ -23,8 +23,8 @@ class Workspace(AbstractClockify):
 		try:
 			logging.info("Start function: create_new_workspace")
 			url = self.base_url+'workspaces/'
-            data = {'name': name}
-            return self.request_post(url, data)
+			data = {'name': name}
+			return self.request_post(url, data)
 
 		except Exception as e: 
 			logging.error("OS error: {0}".format(e))

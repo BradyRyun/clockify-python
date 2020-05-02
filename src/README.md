@@ -23,7 +23,16 @@ pip install clockify
 ## Usage
 
 ```python
-#put your example of code here!
+
+from clockify import factories
+from pprint import pprint
+
+api_key = "<personal _token>"
+workspace_services = factories.WorkspaceFactory(api_key=api_key)
+worspaces = workspace_services.get_all_workspaces()
+
+for workspace in worspaces:
+    pprint (workspace)
 ```
 
 ## Copyright

@@ -13,8 +13,7 @@ class Project(AbstractClockify):
 		try:
 			logging.info("Start function: get_all_projects")
 			url = self.base_url+'workspaces/'+workspace_id+'/projects/'
-            return self.__request_get(url)
-			
+			return self.request_get(url)
 		except Exception as e: 
 			logging.error("OS error: {0}".format(e))
 			logging.error(e.__dict__) 
@@ -24,19 +23,15 @@ class Project(AbstractClockify):
 		try:
 			logging.info("Start function: create_new_project")
 			url = self.base_url+'workspaces/'+workspace_id+'/projects/'
-            data = {
-                    'name': project_name,
-                    "clientId": "",
-                    "isPublic": "false",
-                    "estimate": {
-                        "estimate": "3600",
-                        "type": "AUTO" 
-                        },
-                    "color": "#f44336",
-                    "billable": "false"
-                }
-
-            return self.request_post(url, data)
+			data = {
+					'name': project_name,
+					"clientId": "",
+					"isPublic": "false",
+					"estimate": {"estimate": "3600","type": "AUTO"},
+					"color": "#f44336",
+					"billable": "false"
+					}
+			return self.request_post(url, data)
 		except Exception as e: 
 			logging.error("OS error: {0}".format(e))
 			logging.error(e.__dict__) 
