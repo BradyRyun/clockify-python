@@ -1,0 +1,71 @@
+@startuml
+class Client{
+	Integer:id
+	String:email
+	String:name
+}
+
+Client "1" -- "0..*" Project : sponsored_by >
+
+class Project{
+	Integer:id
+	String:name
+	Project: get_all_projects(workspace_id1)
+	Project: create_new_project(workspace_id1,project_name2)
+}
+
+Project "1" -- "0..*" Membership : refers_to >
+Project "1" -- "0..*" Task : task >
+
+class Task{
+	Integer:id
+	String:name
+	String:status
+	Integer:estimate
+	Task: add_new_task(workspace_id1,project_id2,task_name3,assigneeId4)
+	Task: get_task_done(workspace_id1,project_id2)
+	Task: get_task_active(workspace_id1,project_id2)
+}
+
+Task "1" -- "0..*" TimeEntry : refers_to >
+
+class Workspace{
+	Integer:id
+	String:name
+	Workspace: get_all_workspaces()
+	Workspace: create_new_workspace(name1)
+}
+
+Workspace "1" -- "0..*" Project : has >
+Workspace "1" -- "0..*" User : users >
+Workspace "1" -- "0..*" Client : clients >
+
+class TimeEntry{
+	DateTime:start_time
+	DateTime:end_time
+	Boolean:billable
+	String:description
+	TimeEntry: get_all_time_entry_user(workspace_id1,user_id2)
+}
+
+
+class User{
+	Integer:id
+	String:name
+	String:email
+	User: get_user(id1)
+	User: get_all_workspace_users(workspace_id1)
+	User: add_new_user(workspace_id1,email2)
+}
+
+User "1" -- "0..*" TimeEntry : time_entries >
+User "1" -- "0..*" Workspace : workspaces >
+
+class Membership{
+	DateTime:hour_rate
+	String:member_ship_status
+}
+
+
+
+@enduml

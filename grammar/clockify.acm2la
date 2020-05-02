@@ -1,0 +1,101 @@
+Configuration {
+	software: "clockify"
+	about: "Clockify is the only truly free time tracker and timesheet app for teams of all sizes. Unlike all the other time trackers, Clockify is available for an unlimited numbers of users for free"
+	lib_name: "clockify"
+	author: "Paulo Sérgio dos Santos Júnior"
+	author_email:"paulossjunior@gmail.com"
+	repository: "https://gitlab.com/integration_seon/libs/application/clockify"	
+}
+
+# "Client of project"
+entity Client {
+	
+	id: Integer
+	email: String
+	name: String
+	
+	sponsored_by OneToMany Project
+}
+# "Project has one or more Tasks performed by Users connected to the Project through Membership"
+entity Project {
+	
+	id: Integer
+	name: String
+	
+	# "returns all project from a workspace"
+	function get_all_projects(workspace_id): Project
+	# "create a new project in a workspace"
+	function create_new_project(workspace_id, project_name): Project
+	
+	refers_to OneToMany Membership
+	task OneToMany Task
+}
+
+# "Activity developed by a Team member"
+entity Task {
+	id: Integer
+	name: String
+	status: String
+	estimate: Integer
+	
+	# "create a new task in a project"
+	function add_new_task(workspace_id, project_id, task_name, assigneeId): Task
+	# "returns all done tasks"
+	function get_task_done(workspace_id, project_id):Task
+	# "returns all active tasks"
+	function get_task_active(workspace_id, project_id):Task
+	
+	refers_to OneToMany TimeEntry
+}
+# "A Workspace is an entity that groups Projects related to a Client."
+entity Workspace {
+	
+	id: Integer
+	name: String
+	
+	# "returns all workspace from a user"
+	function get_all_workspaces(): Workspace
+	# "create new worskspace"
+	function create_new_workspace(name): Workspace
+	
+	has OneToMany Project
+	users OneToMany User
+	clients OneToMany Client
+	
+}
+# "Represents time spent on a Task by a User "
+entity TimeEntry {
+	
+	start_time: DateTime
+	end_time: DateTime
+	billable: Boolean
+	description: String
+	
+	# "returns all time entry"
+	function get_all_time_entry_user(workspace_id, user_id): TimeEntry
+}
+# "An user"
+entity User {
+	id: Integer
+	name: String
+	email: String
+	
+	# "returns all users"
+	function get_user(id): User
+	
+	# "returns all users from a workspace"
+	function get_all_workspace_users(workspace_id): User
+	# "add new user in a workspace"
+	function add_new_user(workspace_id, email): User
+	
+	time_entries OneToMany TimeEntry
+	workspaces OneToMany Workspace
+	
+}
+# "An user in a Project"
+entity Membership {
+	
+	hour_rate: DateTime
+	member_ship_status: String
+	
+}

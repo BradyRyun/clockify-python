@@ -1,0 +1,32 @@
+# Clockify
+
+## General Information
+* **Software**:clockify
+* **Author**:Paulo Sérgio dos Santos Júnior
+* **Author's e-mail**:paulossjunior@gmail.com
+* **Source Repository**: [https://gitlab.com/integration_seon/libs/application/clockify](https://gitlab.com/integration_seon/libs/application/clockify)  
+
+## Goal
+Clockify is the only truly free time tracker and timesheet app for teams of all sizes. Unlike all the other time trackers, Clockify is available for an unlimited numbers of users for free
+
+## Documentation
+
+The Documentation can be found in this [link](./docs/documentation.md)
+	
+## Instalation
+
+To install clockify, run this command in your terminal:
+```bash
+pip install clockify
+```
+
+## Usage
+
+```python
+#put your example of code here!
+```
+
+## Copyright
+This lib was PowerRight by [SEON Application Lib Generator](https://gitlab.com/mdd_seon/from_application_conceptual_data_model_2_lib_application)
+
+	
