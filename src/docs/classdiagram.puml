@@ -10,8 +10,8 @@ Client "1" -- "0..*" Project : sponsored_by >
 class Project{
 	Integer:id
 	String:name
-	Project: get_all_projects(workspace_id1)
-	Project: create_new_project(workspace_id1,project_name2)
+	Project: get_all_projects(workspace_id)
+	Project: create_new_project(workspace_id,project_name)
 }
 
 Project "1" -- "0..*" Membership : refers_to >
@@ -22,9 +22,9 @@ class Task{
 	String:name
 	String:status
 	Integer:estimate
-	Task: add_new_task(workspace_id1,project_id2,task_name3,assigneeId4)
-	Task: get_task_done(workspace_id1,project_id2)
-	Task: get_task_active(workspace_id1,project_id2)
+	Task: add_new_task(workspace_id,project_id,task_name,assigneeId)
+	Task: get_task_done(workspace_id,project_id)
+	Task: get_task_active(workspace_id,project_id)
 }
 
 Task "1" -- "0..*" TimeEntry : refers_to >
@@ -33,7 +33,7 @@ class Workspace{
 	Integer:id
 	String:name
 	Workspace: get_all_workspaces()
-	Workspace: create_new_workspace(name1)
+	Workspace: create_new_workspace(name)
 }
 
 Workspace "1" -- "0..*" Project : has >
@@ -45,7 +45,7 @@ class TimeEntry{
 	DateTime:end_time
 	Boolean:billable
 	String:description
-	TimeEntry: get_all_time_entry_user(workspace_id1,user_id2)
+	TimeEntry: get_all_time_entry_user(workspace_id,user_id)
 }
 
 
@@ -54,8 +54,8 @@ class User{
 	String:name
 	String:email
 	User: get_user(id1)
-	User: get_all_workspace_users(workspace_id1)
-	User: add_new_user(workspace_id1,email2)
+	User: get_all_workspace_users(workspace_id)
+	User: add_new_user(workspace_id,email)
 }
 
 User "1" -- "0..*" TimeEntry : time_entries >
