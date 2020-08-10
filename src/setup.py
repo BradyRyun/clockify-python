@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='clockify',  # Required
-    version='1.0.1',  # Required
+    version='2.0.4',  # Required
     author="Paulo Sérgio dos Santos Júnior",
     author_email="paulossjunior@gmail.com",
     description="Clockify is the only truly free time tracker and timesheet app for teams of all sizes. Unlike all the other time trackers, Clockify is available for an unlimited numbers of users for free",
