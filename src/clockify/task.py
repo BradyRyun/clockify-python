@@ -52,7 +52,7 @@ class Task(AbstractClockify):
 			
 			logging.info("Start function: get_task_done")
 			url = self.base_url+'workspaces/'+workspace_id+'/projects/'+project_id+'/tasks/'
-			return self.get_task(url)
+			return self.__get_task(url)
 
 		except Exception as e: 
 			logging.error("OS error: {0}".format(e))
@@ -63,7 +63,7 @@ class Task(AbstractClockify):
 		try:
 			logging.info("Start function: get_task_active")
 			url = self.base_url+'workspaces/'+workspace_id+'/projects/'+project_id+'/tasks/?is-active=True'
-			return self.get_task(url)
+			return self.__get_task(url)
 		except Exception as e: 
 			logging.error("OS error: {0}".format(e))
 			logging.error(e.__dict__) 

@@ -19,7 +19,7 @@ class TimeEntry(AbstractClockify):
             page = 1
             while (has_time_entry):
                 urlx = url + "/?page="+str(page)
-                r = self.__request_get(urlx)
+                r = self.request_get(urlx)
                 if len(r) > 0:
                     time_entries.append(r)
                     page = page + 1
