@@ -12,6 +12,18 @@ Clockify is the only truly free time tracker and timesheet app for teams of all 
 ## Documentation
 
 The Documentation can be found in this [link](./docs/documentation.md)
+
+## Generate documentation
+
+To create the code documentation:
+```bash
+pdoc --html --force jiraX/ --output docs
+
+```
+### Acess code documentation	
+
+To accesss the documenation, go to folder docs/jiraX and open index.html 
+
 	
 ## Instalation
 
