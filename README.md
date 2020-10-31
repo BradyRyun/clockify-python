@@ -23,7 +23,6 @@ pdoc --html --force clockify/ --output docs
 ### Acess code documentation	
 
 To accesss the documenation, go to folder docs/clockify and open index.html 
-
 	
 ## Instalation
 
