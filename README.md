@@ -17,12 +17,12 @@ The Documentation can be found in this [link](./docs/documentation.md)
 
 To create the code documentation:
 ```bash
-pdoc --html --force jiraX/ --output docs
+pdoc --html --force clockify/ --output docs
 
 ```
 ### Acess code documentation	
 
-To accesss the documenation, go to folder docs/jiraX and open index.html 
+To accesss the documenation, go to folder docs/clockify and open index.html 
 
 	
 ## Instalation
