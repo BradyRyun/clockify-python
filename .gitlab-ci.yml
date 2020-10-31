@@ -23,8 +23,8 @@ quality:
       - .sonar/cache
   script:
     - sonar-scanner -Dsonar.qualitygate.wait=true -Dsonar.login="${VAR_SONAR_CLOUD_TOKEN}"
-  #only:
-  #  variables:
-  #    - ($CI_COMMIT_MESSAGE !~ /documentação gerada/ && $CI_COMMIT_MESSAGE !~ /release (\d+)\.(\d+)\.(\d+) → (\d+)\.(\d+)\.(\d+)/)
+  only:
+    variables:
+      - ($CI_COMMIT_MESSAGE !~ /documentação gerada/ && $CI_COMMIT_MESSAGE !~ /release (\d+)\.(\d+)\.(\d+) → (\d+)\.(\d+)\.(\d+)/)
 
       
