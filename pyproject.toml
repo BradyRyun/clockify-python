@@ -6,6 +6,7 @@ bump_message = "release $current_version → $new_version"
 version_files = [
     "setup.py:version",
     "pyproject.toml:version",
+    "sonar-project.properties:sonar.projectVersion",
 ]
 
 style = [
