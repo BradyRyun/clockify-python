@@ -2,8 +2,8 @@
 
 ## General Information
 * **Software**:clockify
-* **Author**:Paulo Sérgio dos Santos Júnior
-* **Author's e-mail**:paulossjunior@gmail.com
+* **Author**:Brady Ryun - Original by: Paulo Sergio dos Santos Junior
+* **Author's e-mail**:brady@ryunengineering.com 
 * **Source Repository**: [https://gitlab.com/integration_seon/libs/application/clockify](https://gitlab.com/integration_seon/libs/application/clockify)  
 
 ## Goal
@@ -28,7 +28,7 @@ To accesss the documenation, go to folder docs/clockify and open index.html
 
 To install clockify, run this command in your terminal:
 ```bash
-pip install clockify
+pip install git+https://github.com/BradyRyun/clockify-python#egg=clockify
 ```
 
 ## Usage
