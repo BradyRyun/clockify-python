@@ -66,4 +66,14 @@ class Task(AbstractClockify):
 			return self.__get_task(url)
 		except Exception as e: 
 			logging.error("OS error: {0}".format(e))
-			logging.error(e.__dict__) 
+			logging.error(e.__dict__)
+
+	def get_task_on_project_by_id(self,workspace_id,project_id,task_id):
+		try:
+			logging.info("Start function: get_task_on_project_id")
+			url = f"{self.base_url}workspaces/{workspace_id}/projects/{project_id}/tasks/{task_id}"
+			return self.__get_task(url)
+		except Exception as e:
+			logging.error("OS error: {0}".format(e))
+			logging.error(e.__dict__)
+
