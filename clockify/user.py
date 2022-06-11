@@ -6,8 +6,17 @@ class User(AbstractClockify):
 
 	def __init__(self,api_key):
 		super(User,self).__init__(api_key=api_key)
-		
-	# returns all users
+
+	def get_self(self):
+		try:
+			logging.info("Start function: get_self")
+
+			url = self.base_url + 'user'
+			return self.request_get(url)
+		except Exception as e:
+			logging.error("OS error: {0}".format(e))
+			logging.error(e.__dict__)
+		# returns all users
 	def get_user(self,id): 
 		try:
 			logging.info("Start function: get_user")
