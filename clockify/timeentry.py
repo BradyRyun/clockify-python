@@ -110,5 +110,4 @@ class TimeEntry(AbstractClockify):
             elif len(r) < 50 or len(r) == 0:
                 has_time_entry = False
                 page = 1
-            logging.info(time_entries)
         return time_entries
