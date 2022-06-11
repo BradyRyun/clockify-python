@@ -2,17 +2,19 @@ import requests
 import json
 import logging
 import time
+
 logging.basicConfig(level=logging.INFO)
 from abc import ABC
 
+
 class AbstractClockify(ABC):
-    def __init__(self,api_key):
+    def __init__(self, api_key):
 
         self.base_url = 'https://api.clockify.me/api/v1/'
         self.api_key = api_key
-        self.header =  {'X-Api-Key': self.api_key }
-    
-    def request_get(self,url):
+        self.header = {'X-Api-Key': self.api_key}
+
+    def request_get(self, url):
         while (True):
             try:
                 response = requests.get(url, headers=self.header)
@@ -21,11 +23,21 @@ class AbstractClockify(ABC):
                 logging.error("Error: {0}".format(e))
                 logging.error("Try againg in 60 seconds")
                 time.sleep(60)
-    
-    def request_post(self,url,payload):
+
+    def request_get_params(self, url, params):
         while (True):
             try:
-                response = requests.post(url, headers=self.header,json=payload)
+                response = requests.get(url, headers=self.header, params=params)
+                return response.json()
+            except Exception as e:
+                logging.error("Error: {0}".format(e))
+                logging.error("Try againg in 60 seconds")
+                time.sleep(60)
+
+    def request_post(self, url, payload):
+        while (True):
+            try:
+                response = requests.post(url, headers=self.header, json=payload)
                 return response.json()
             except Exception as e:
                 logging.error("Error: {0}".format(e))
