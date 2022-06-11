@@ -45,7 +45,6 @@ class TimeEntry(AbstractClockify):
             logging.info("Start function: get_all_time_entry_user")
             url = self.base_url+'workspaces/'+workspace_id+'/user/'+user_id+'/time-entries'
             r = self.request_get(url)
-            logging.info(r)
             return r
         except Exception as e: 
             logging.error("OS error: {0}".format(e))
@@ -61,7 +60,6 @@ class TimeEntry(AbstractClockify):
                 "end": end
             }
             r = self.request_get_params(url,params=params)
-            logging.info(r)
             return r
         except ValueError as ve:
             logging.error("Please specify a proper start and end date")
@@ -80,7 +78,6 @@ class TimeEntry(AbstractClockify):
                 "project": project_id
             }
             r = self.request_get_params(url,params=params)
-            logging.info(r)
             return r
         except ValueError as ve:
             logging.error("Please specify a proper start and end date")
