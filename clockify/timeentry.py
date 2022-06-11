@@ -45,6 +45,7 @@ class TimeEntry(AbstractClockify):
             logging.info("Start function: get_all_time_entry_user")
             url = self.base_url+'workspaces/'+workspace_id+'/user/'+user_id+'/time-entries'
             r = self.request_get(url)
+            logging.info(r)
             time_entries_list = self.parse_time_entry_results(r, url)
             return time_entries_list	
         except Exception as e: 
@@ -66,6 +67,7 @@ class TimeEntry(AbstractClockify):
                 "end": end
             }
             r = self.request_get_params(url,params=params)
+            logging.info(r)
             time_entries_list = self.parse_time_entry_results(r, url)
             return time_entries_list
         except ValueError as ve:
@@ -85,6 +87,7 @@ class TimeEntry(AbstractClockify):
                 "project": project_id
             }
             r = self.request_get_params(url,params=params)
+            logging.info(r)
             time_entries_list = self.parse_time_entry_results(r, url)
             return time_entries_list
         except ValueError as ve:
