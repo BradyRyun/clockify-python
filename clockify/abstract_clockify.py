@@ -8,7 +8,7 @@ from abc import ABC
 class AbstractClockify(ABC):
     def __init__(self,api_key):
 
-        self.base_url = 'https://api.clockify.me/api/' 
+        self.base_url = 'https://api.clockify.me/api/v1/'
         self.api_key = api_key
         self.header =  {'X-Api-Key': self.api_key }
     

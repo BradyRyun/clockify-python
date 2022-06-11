@@ -11,7 +11,7 @@ class TimeEntry(AbstractClockify):
     def get_all_time_entry_user(self,workspace_id,user_id): 
         try:
             logging.info("Start function: get_all_time_entry_user")
-            url = self.base_url+'v1/workspaces/'+workspace_id+'/user/'+user_id+'/time-entries'
+            url = self.base_url+'workspaces/'+workspace_id+'/user/'+user_id+'/time-entries'
             r = self.request_get(url)
             time_entries = []
             time_entries.append(r)
