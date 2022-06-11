@@ -46,16 +46,10 @@ class TimeEntry(AbstractClockify):
             url = self.base_url+'workspaces/'+workspace_id+'/user/'+user_id+'/time-entries'
             r = self.request_get(url)
             logging.info(r)
-            # time_entries_list = self.parse_time_entry_results(r, url)
             return r
         except Exception as e: 
             logging.error("OS error: {0}".format(e))
             logging.error(e.__dict__)
-
-    def parse_time_entry_results(self, r, url):
-        time_entries = self.get_time_entry_results(r, url)
-        time_entries_list = generate_time_entry_list(time_entries)
-        return time_entries_list
 
     def get_all_time_entries_for_user_in_date_range(self,workspace_id,user_id,start,end):
         try:
@@ -68,7 +62,6 @@ class TimeEntry(AbstractClockify):
             }
             r = self.request_get_params(url,params=params)
             logging.info(r)
-            # time_entries_list = self.parse_time_entry_results(r, url)
             return r
         except ValueError as ve:
             logging.error("Please specify a proper start and end date")
@@ -88,26 +81,9 @@ class TimeEntry(AbstractClockify):
             }
             r = self.request_get_params(url,params=params)
             logging.info(r)
-            # time_entries_list = self.parse_time_entry_results(r, url)
             return r
         except ValueError as ve:
             logging.error("Please specify a proper start and end date")
         except Exception as e:
             logging.error("OS error: {0}".format(e))
             logging.error(e.__dict__)
-
-    def get_time_entry_results(self, r, url):
-        time_entries = []
-        time_entries.append(r)
-        has_time_entry = True
-        page = 1
-        while (has_time_entry):
-            urlx = url + "/?page=" + str(page)
-            r = self.request_get(urlx)
-            if len(r) > 0:
-                time_entries.append(r)
-                page = page + 1
-            elif len(r) < 50 or len(r) == 0:
-                has_time_entry = False
-                page = 1
-        return time_entries
