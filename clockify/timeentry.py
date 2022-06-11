@@ -19,8 +19,10 @@ def validate_start_and_end(end, start):
     start_validate = validate_iso8601(start)
     end_validate = validate_iso8601(end)
     if not start_validate:
+        logging.error("Invalid start date")
         raise ValueError("Please specify a valid ISO-8601 value for start date")
     if not end_validate:
+        logging.error("Invalid end date")
         raise ValueError("Please specify a valid ISO-8601 value for end date")
 
 
@@ -67,7 +69,7 @@ class TimeEntry(AbstractClockify):
             time_entries_list = self.parse_time_entry_results(r, url)
             return time_entries_list
         except ValueError as ve:
-            logging.error("Please specify a proper ")
+            logging.error("Please specify a proper start and end date")
         except Exception as e:
             logging.error("OS error: {0}".format(e))
             logging.error(e.__dict__)
@@ -86,7 +88,7 @@ class TimeEntry(AbstractClockify):
             time_entries_list = self.parse_time_entry_results(r, url)
             return time_entries_list
         except ValueError as ve:
-            logging.error("Please specify a proper ")
+            logging.error("Please specify a proper start and end date")
         except Exception as e:
             logging.error("OS error: {0}".format(e))
             logging.error(e.__dict__)
