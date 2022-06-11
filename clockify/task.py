@@ -5,10 +5,10 @@ from .abstract_clockify import AbstractClockify
 class Task(AbstractClockify):
 
 	def __init__(self,api_key):
-		super(Task,self).__init__(api_key=api_key)	
+		super(Task,self).__init__(api_key=api_key)
 	
 	# create a new task in a project
-	def add_new_task(self,workspace_id,project_id,task_name,assigneeId): 
+	def add_new_task(self,workspace_id,project_id,task_name,assigneeId):
 		try:
 			logging.info("Start function: add_new_task")
 
@@ -72,7 +72,8 @@ class Task(AbstractClockify):
 		try:
 			logging.info("Start function: get_task_on_project_id")
 			url = f"{self.base_url}workspaces/{workspace_id}/projects/{project_id}/tasks/{task_id}"
-			return self.__get_task(url)
+			result = self.request_get(url)
+			return result
 		except Exception as e:
 			logging.error("OS error: {0}".format(e))
 			logging.error(e.__dict__)
